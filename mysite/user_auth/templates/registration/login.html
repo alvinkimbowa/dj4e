@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Login</title>
+        <style>
+            form {
+                width: max-content;
+                margin: 0 auto;
+                vertical-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+    </head>
+    <body>
+        <form method='post' action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type='Submit' value='Login' />
+            <input type='hidden' name='next' value='{{ next }}' />
+        </form>
+    </body>
+</html>

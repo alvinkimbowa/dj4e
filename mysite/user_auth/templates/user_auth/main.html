@@ -1,0 +1,20 @@
+<html>
+    <title>Authorization</title>
+    <body>
+        <ul>
+            <li>
+                Go to <a href="{% url 'user_auth:index' %}">{% url 'user_auth:index' %}</a>
+                    (protected by LoginRequiredMixin)
+            </li>
+            <li>
+                Go to <a href="{% url 'user_auth:python' %}">{% url 'user_auth:python' %}</a>
+                    dump request.user data in python
+            </li>
+        </ul>
+        {% if user.is_authenticated %}
+            <p><a href="{% url 'logout' %}?next={% url 'user_auth:index' %}">Logout</a></p>
+        {% else %}
+            <p><a href="{% url 'login' %}?next={% url 'user_auth:index' %}">Login</a></p>
+        {% endif %}
+    </body>
+</html>
